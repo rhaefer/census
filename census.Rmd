@@ -35,11 +35,21 @@ acs_var <- load_variables(2016, "acs5", cache = TRUE)
 #means of transportation to work public transportation - B08301_010
 #means of transportation to work - worked at home - B08301_021
 # means of transportation to work - worked at home - B08301_020
+
+work_transport <- c(Drive= "B08301_002",
+                    Walk= "B08301_019",
+                    Bike = "B08301_018",
+                    `Public Transport` = "B08301_010",
+                    `Work from Home` = "B08301_021",
+                    Other = "B08301_020",
+                    Motorcycle = "B08301_017", 
+                    Taxi = "B08301_016")
+                    
   nv <- get_acs(geography = "tract", year=2016, 
-                variables =  c("B08301_002","B08301_001","B08301_019", "B08301_018", "B08301_017", "B08301_010","B08301_021","B08301_020","B08301_016"), 
-                state = "NV", geometry = FALSE)
+                variables =  work_transport, 
+                state = "NV", geometry = FALSE, summary_var = "B08301_001" )
   ca <- get_acs(geography = "tract", year=2016, 
-                variables = c("B08301_002","B08301_001", "B08301_019", "B08301_018","B08301_017", "B08301_010","B08301_021","B08301_020","B08301_016"), 
+                variables = work_transport, summary_var = "B08301_001", 
                 state = "CA", geometry= FALSE)
   all.ca.nv<- data.frame(bind_rows(nv, ca))
   data<-all.ca.nv  %>%
