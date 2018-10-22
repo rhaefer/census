@@ -17,9 +17,9 @@ options(tigris_use_cache = TRUE)
 ```
 ```{r}
 tract<-st_read("H:/census/data", "census_tracts") %>%
-  st_transform(tract, crs=4326)
+  st_transform(crs=4326)
 block_group<-st_read("H:/census/data", "block_groups")%>%
-  st_transform(tract, crs=4326)
+  st_transform(crs=4326)
 
 ### ACS variables
 acs_var <- load_variables(2016, "acs5", cache = TRUE)
