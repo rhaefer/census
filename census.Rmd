@@ -21,7 +21,7 @@ block_group<-geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742
 tract <- geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742a5855c1339517681_3.geojson", what="sp") %>%
   st_as_sf()
 
-##### ACS variables
+###### ACS variables
 acs_var <- load_variables(2016, "acs5", cache = TRUE)
 ```
 
